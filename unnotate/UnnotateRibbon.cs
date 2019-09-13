@@ -18,18 +18,18 @@ namespace unnotate
         {
             if (Globals.Ribbons.UnnotateRibbon.showHideToggleButton.Checked)
             {
-                Debug.WriteLine("HERE: Checked");
+                //Debug.WriteLine("HERE: Checked");
                 ThisAddIn.ToggleShowHideObjects();
             } else
             {
-                Debug.WriteLine("HERE: Unchecked");
+                //Debug.WriteLine("HERE: Unchecked");
                 ThisAddIn.ToggleShowHideObjects();
             }
         }
 
-        private void ShowHideButton_Click(object sender, RibbonControlEventArgs e)
+        private void TextBoxButton_Click(object sender, RibbonControlEventArgs e)
         {
-            //ThisAddIn.ToggleShowHideObjects();
+            ThisAddIn.DrawTextBox();
         }
     }
 }

@@ -24,11 +24,11 @@ namespace unnotate
             PowerPoint.Slides slides = Globals.ThisAddIn.Application.ActivePresentation.Slides;
             foreach (PowerPoint.Slide slide in slides)
             {
-                Debug.WriteLine("SlideIndex: " + slide.SlideIndex);
+                //Debug.WriteLine("SlideIndex: " + slide.SlideIndex);
                 PowerPoint.Slide currSlide = slides[slide.SlideIndex];
                 foreach (PowerPoint.Shape shape in currSlide.Shapes)
                 {
-                    Debug.WriteLine("ShapeID: " + shape.Id);
+                    //Debug.WriteLine("ShapeID: " + shape.Id);
                     if (shape.Type.Equals(Office.MsoShapeType.msoTextBox))
                     {
                         //Debug.WriteLine("TextBox Color: " + shape.TextFrame.TextRange.Font.Color.RGB);
@@ -47,6 +47,18 @@ namespace unnotate
                     }
                 }
             }
+        }
+
+        internal static void DrawTextBox()
+        {
+            int slideIdx = Globals.ThisAddIn.Application.ActiveWindow.Selection.SlideRange.SlideIndex;
+            PowerPoint.Slide currSlide = Globals.ThisAddIn.Application.ActivePresentation.Slides[slideIdx];
+            PowerPoint.TextRange newTextRange = currSlide.Shapes.AddTextbox(
+                Office.MsoTextOrientation.msoTextOrientationHorizontal, 100, 100, 200, 50).TextFrame.TextRange;
+            newTextRange.Text = "New TextBox";
+            newTextRange.Font.Size = 18;
+            //newTextRange.Font.Color.RGB = Color.Purple.ToArgb();
+            newTextRange.Font.Color.RGB = 9109675;
         }
 
         #region VSTO generated code

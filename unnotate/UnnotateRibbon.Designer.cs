@@ -37,14 +37,17 @@
             this.Unnotate = this.Factory.CreateRibbonTab();
             this.objectGroup = this.Factory.CreateRibbonGroup();
             this.showHideToggleButton = this.Factory.CreateRibbonToggleButton();
-            this.showHideButton = this.Factory.CreateRibbonButton();
+            this.insertGroup = this.Factory.CreateRibbonGroup();
+            this.textBoxButton = this.Factory.CreateRibbonButton();
             this.Unnotate.SuspendLayout();
             this.objectGroup.SuspendLayout();
+            this.insertGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // Unnotate
             // 
             this.Unnotate.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.Unnotate.Groups.Add(this.insertGroup);
             this.Unnotate.Groups.Add(this.objectGroup);
             this.Unnotate.Label = "Unnotate";
             this.Unnotate.Name = "Unnotate";
@@ -52,7 +55,6 @@
             // objectGroup
             // 
             this.objectGroup.Items.Add(this.showHideToggleButton);
-            this.objectGroup.Items.Add(this.showHideButton);
             this.objectGroup.Label = "Objects";
             this.objectGroup.Name = "objectGroup";
             // 
@@ -62,11 +64,17 @@
             this.showHideToggleButton.Name = "showHideToggleButton";
             this.showHideToggleButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
             // 
-            // showHideButton
+            // insertGroup
             // 
-            this.showHideButton.Label = "Show/Hide";
-            this.showHideButton.Name = "showHideButton";
-            this.showHideButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ShowHideButton_Click);
+            this.insertGroup.Items.Add(this.textBoxButton);
+            this.insertGroup.Label = "Insert";
+            this.insertGroup.Name = "insertGroup";
+            // 
+            // textBoxButton
+            // 
+            this.textBoxButton.Label = "Text Box";
+            this.textBoxButton.Name = "textBoxButton";
+            this.textBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.TextBoxButton_Click);
             // 
             // UnnotateRibbon
             // 
@@ -78,6 +86,8 @@
             this.Unnotate.PerformLayout();
             this.objectGroup.ResumeLayout(false);
             this.objectGroup.PerformLayout();
+            this.insertGroup.ResumeLayout(false);
+            this.insertGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -87,7 +97,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonTab Unnotate;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup objectGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showHideToggleButton;
-        internal Microsoft.Office.Tools.Ribbon.RibbonButton showHideButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup insertGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton textBoxButton;
     }
 
     partial class ThisRibbonCollection
