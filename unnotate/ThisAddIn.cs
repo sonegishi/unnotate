@@ -39,7 +39,7 @@ namespace unnotate
                     }
                     else if (shape.Type.Equals(Office.MsoShapeType.msoInkComment))
                     {
-                        Debug.WriteLine("Ink RGB: " + shape.Line.ForeColor.RGB);
+                        //Debug.WriteLine("Ink RGB: " + shape.Line.ForeColor.RGB);
                         if (shape.Line.ForeColor.RGB.Equals(9109675))
                         {
                             shape.Visible = Office.MsoTriState.msoTriStateToggle;
@@ -59,6 +59,13 @@ namespace unnotate
             newTextRange.Font.Size = 18;
             //newTextRange.Font.Color.RGB = Color.Purple.ToArgb();
             newTextRange.Font.Color.RGB = 9109675;
+        }
+
+        internal static void CurrentSlideDuplicate()
+        {
+            int slideIdx = Globals.ThisAddIn.Application.ActiveWindow.Selection.SlideRange.SlideIndex;
+            PowerPoint.SlideRange slide = Globals.ThisAddIn.Application.ActivePresentation.Slides[slideIdx].Duplicate();
+            slide.Select();
         }
 
         #region VSTO generated code

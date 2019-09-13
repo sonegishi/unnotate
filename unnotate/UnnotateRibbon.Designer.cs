@@ -39,14 +39,18 @@
             this.showHideToggleButton = this.Factory.CreateRibbonToggleButton();
             this.insertGroup = this.Factory.CreateRibbonGroup();
             this.textBoxButton = this.Factory.CreateRibbonButton();
+            this.slideGroup = this.Factory.CreateRibbonGroup();
+            this.duplicateSlideButton = this.Factory.CreateRibbonButton();
             this.Unnotate.SuspendLayout();
             this.objectGroup.SuspendLayout();
             this.insertGroup.SuspendLayout();
+            this.slideGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // Unnotate
             // 
             this.Unnotate.ControlId.ControlIdType = Microsoft.Office.Tools.Ribbon.RibbonControlIdType.Office;
+            this.Unnotate.Groups.Add(this.slideGroup);
             this.Unnotate.Groups.Add(this.insertGroup);
             this.Unnotate.Groups.Add(this.objectGroup);
             this.Unnotate.Label = "Unnotate";
@@ -76,6 +80,18 @@
             this.textBoxButton.Name = "textBoxButton";
             this.textBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.TextBoxButton_Click);
             // 
+            // slideGroup
+            // 
+            this.slideGroup.Items.Add(this.duplicateSlideButton);
+            this.slideGroup.Label = "Slides";
+            this.slideGroup.Name = "slideGroup";
+            // 
+            // duplicateSlideButton
+            // 
+            this.duplicateSlideButton.Label = "Duplicate";
+            this.duplicateSlideButton.Name = "duplicateSlideButton";
+            this.duplicateSlideButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.DuplicateSlideButton_Click);
+            // 
             // UnnotateRibbon
             // 
             this.Name = "UnnotateRibbon";
@@ -88,6 +104,8 @@
             this.objectGroup.PerformLayout();
             this.insertGroup.ResumeLayout(false);
             this.insertGroup.PerformLayout();
+            this.slideGroup.ResumeLayout(false);
+            this.slideGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -99,6 +117,8 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonToggleButton showHideToggleButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup insertGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton textBoxButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup slideGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton duplicateSlideButton;
     }
 
     partial class ThisRibbonCollection

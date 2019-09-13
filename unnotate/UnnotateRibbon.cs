@@ -31,5 +31,10 @@ namespace unnotate
         {
             ThisAddIn.DrawTextBox();
         }
+
+        private void DuplicateSlideButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            ThisAddIn.CurrentSlideDuplicate();
+        }
     }
 }
