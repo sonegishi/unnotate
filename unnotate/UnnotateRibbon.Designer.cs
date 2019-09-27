@@ -35,16 +35,21 @@
         private void InitializeComponent()
         {
             this.Unnotate = this.Factory.CreateRibbonTab();
-            this.objectGroup = this.Factory.CreateRibbonGroup();
-            this.showHideToggleButton = this.Factory.CreateRibbonToggleButton();
-            this.insertGroup = this.Factory.CreateRibbonGroup();
-            this.textBoxButton = this.Factory.CreateRibbonButton();
             this.slideGroup = this.Factory.CreateRibbonGroup();
             this.duplicateSlideButton = this.Factory.CreateRibbonButton();
+            this.insertGroup = this.Factory.CreateRibbonGroup();
+            this.textBoxButton = this.Factory.CreateRibbonButton();
+            this.objectGroup = this.Factory.CreateRibbonGroup();
+            this.showHideToggleButton = this.Factory.CreateRibbonToggleButton();
+            this.fileGroup = this.Factory.CreateRibbonGroup();
+            this.removeExportButton = this.Factory.CreateRibbonButton();
+            this.removeAllButton = this.Factory.CreateRibbonButton();
+            this.exportButton = this.Factory.CreateRibbonButton();
             this.Unnotate.SuspendLayout();
-            this.objectGroup.SuspendLayout();
-            this.insertGroup.SuspendLayout();
             this.slideGroup.SuspendLayout();
+            this.insertGroup.SuspendLayout();
+            this.objectGroup.SuspendLayout();
+            this.fileGroup.SuspendLayout();
             this.SuspendLayout();
             // 
             // Unnotate
@@ -53,32 +58,9 @@
             this.Unnotate.Groups.Add(this.slideGroup);
             this.Unnotate.Groups.Add(this.insertGroup);
             this.Unnotate.Groups.Add(this.objectGroup);
+            this.Unnotate.Groups.Add(this.fileGroup);
             this.Unnotate.Label = "Unnotate";
             this.Unnotate.Name = "Unnotate";
-            // 
-            // objectGroup
-            // 
-            this.objectGroup.Items.Add(this.showHideToggleButton);
-            this.objectGroup.Label = "Objects";
-            this.objectGroup.Name = "objectGroup";
-            // 
-            // showHideToggleButton
-            // 
-            this.showHideToggleButton.Label = "Show/Hide";
-            this.showHideToggleButton.Name = "showHideToggleButton";
-            this.showHideToggleButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
-            // 
-            // insertGroup
-            // 
-            this.insertGroup.Items.Add(this.textBoxButton);
-            this.insertGroup.Label = "Insert";
-            this.insertGroup.Name = "insertGroup";
-            // 
-            // textBoxButton
-            // 
-            this.textBoxButton.Label = "Text Box";
-            this.textBoxButton.Name = "textBoxButton";
-            this.textBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.TextBoxButton_Click);
             // 
             // slideGroup
             // 
@@ -92,6 +74,56 @@
             this.duplicateSlideButton.Name = "duplicateSlideButton";
             this.duplicateSlideButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.DuplicateSlideButton_Click);
             // 
+            // insertGroup
+            // 
+            this.insertGroup.Items.Add(this.textBoxButton);
+            this.insertGroup.Label = "Insert";
+            this.insertGroup.Name = "insertGroup";
+            // 
+            // textBoxButton
+            // 
+            this.textBoxButton.Label = "Text Box";
+            this.textBoxButton.Name = "textBoxButton";
+            this.textBoxButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.TextBoxButton_Click);
+            // 
+            // objectGroup
+            // 
+            this.objectGroup.Items.Add(this.showHideToggleButton);
+            this.objectGroup.Items.Add(this.removeAllButton);
+            this.objectGroup.Label = "Objects";
+            this.objectGroup.Name = "objectGroup";
+            // 
+            // showHideToggleButton
+            // 
+            this.showHideToggleButton.Label = "Show/Hide";
+            this.showHideToggleButton.Name = "showHideToggleButton";
+            this.showHideToggleButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.ToggleButton1_Click);
+            // 
+            // fileGroup
+            // 
+            this.fileGroup.Items.Add(this.removeExportButton);
+            this.fileGroup.Items.Add(this.exportButton);
+            this.fileGroup.Label = "Files";
+            this.fileGroup.Name = "fileGroup";
+            // 
+            // removeExportButton
+            // 
+            this.removeExportButton.Label = "RemoveAndExport";
+            this.removeExportButton.Name = "removeExportButton";
+            this.removeExportButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.RemoveExportButton_Click);
+            // 
+            // removeAllButton
+            // 
+            this.removeAllButton.Label = "Remove All";
+            this.removeAllButton.Name = "removeAllButton";
+            this.removeAllButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.RemoveAllButton_Click);
+            // 
+            // exportButton
+            // 
+            this.exportButton.Label = "Export";
+            this.exportButton.Name = "exportButton";
+            this.exportButton.Click += new Microsoft.Office.Tools.Ribbon.RibbonControlEventHandler(this.Button1_Click);
+            // 
             // UnnotateRibbon
             // 
             this.Name = "UnnotateRibbon";
@@ -100,12 +132,14 @@
             this.Load += new Microsoft.Office.Tools.Ribbon.RibbonUIEventHandler(this.UnnotateRibbon_Load);
             this.Unnotate.ResumeLayout(false);
             this.Unnotate.PerformLayout();
-            this.objectGroup.ResumeLayout(false);
-            this.objectGroup.PerformLayout();
-            this.insertGroup.ResumeLayout(false);
-            this.insertGroup.PerformLayout();
             this.slideGroup.ResumeLayout(false);
             this.slideGroup.PerformLayout();
+            this.insertGroup.ResumeLayout(false);
+            this.insertGroup.PerformLayout();
+            this.objectGroup.ResumeLayout(false);
+            this.objectGroup.PerformLayout();
+            this.fileGroup.ResumeLayout(false);
+            this.fileGroup.PerformLayout();
             this.ResumeLayout(false);
 
         }
@@ -119,6 +153,10 @@
         internal Microsoft.Office.Tools.Ribbon.RibbonButton textBoxButton;
         internal Microsoft.Office.Tools.Ribbon.RibbonGroup slideGroup;
         internal Microsoft.Office.Tools.Ribbon.RibbonButton duplicateSlideButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonGroup fileGroup;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton removeExportButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton removeAllButton;
+        internal Microsoft.Office.Tools.Ribbon.RibbonButton exportButton;
     }
 
     partial class ThisRibbonCollection

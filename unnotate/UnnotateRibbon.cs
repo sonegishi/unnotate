@@ -36,5 +36,20 @@ namespace unnotate
         {
             ThisAddIn.CurrentSlideDuplicate();
         }
+
+        private void RemoveExportButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            ThisAddIn.ExportPowerPointAndRemoveObjects();
+        }
+
+        private void RemoveAllButton_Click(object sender, RibbonControlEventArgs e)
+        {
+            ThisAddIn.RemoveObjects();
+        }
+
+        private void Button1_Click(object sender, RibbonControlEventArgs e)
+        {
+            ThisAddIn.ExportPowerPoint();
+        }
     }
 }
