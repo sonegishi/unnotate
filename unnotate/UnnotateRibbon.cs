@@ -18,23 +18,25 @@ namespace unnotate
         {
             if (Globals.Ribbons.UnnotateRibbon.showHideToggleButton.Checked)
             {
-                //Debug.WriteLine("HERE: Checked");
-                ThisAddIn.ToggleShowHideObjects();
+                ThisAddIn.ToggleShowHideObjects(false);
+                Globals.Ribbons.UnnotateRibbon.showHideLabel.Label = "Status: Hidden";
             } else
             {
-                //Debug.WriteLine("HERE: Unchecked");
-                ThisAddIn.ToggleShowHideObjects();
+                ThisAddIn.ToggleShowHideObjects(true);
+                Globals.Ribbons.UnnotateRibbon.showHideLabel.Label = "Status: Shown";
             }
         }
 
         private void TextBoxButton_Click(object sender, RibbonControlEventArgs e)
         {
             ThisAddIn.DrawTextBox();
-        }
-
-        private void DuplicateSlideButton_Click(object sender, RibbonControlEventArgs e)
-        {
-            ThisAddIn.CurrentSlideDuplicate();
+            if (Globals.Ribbons.UnnotateRibbon.showHideToggleButton.Checked)
+            {
+                ThisAddIn.ToggleShowHideObjects(false);
+            } else
+            {
+                ThisAddIn.ToggleShowHideObjects(true);
+            }
         }
 
         private void RemoveExportButton_Click(object sender, RibbonControlEventArgs e)
@@ -44,12 +46,7 @@ namespace unnotate
 
         private void RemoveAllButton_Click(object sender, RibbonControlEventArgs e)
         {
-            ThisAddIn.RemoveObjects();
-        }
-
-        private void Button1_Click(object sender, RibbonControlEventArgs e)
-        {
-            ThisAddIn.ExportPowerPoint();
+            ThisAddIn.RemoveObjects(true);
         }
     }
 }
